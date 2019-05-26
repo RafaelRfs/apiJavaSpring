@@ -1,13 +1,13 @@
 package com.siteapprfs.main.services;
 
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+//import org.junit.jupiter.api.Test;
+//import org.mockito.Mock;
 
-import junit.framework.TestCase;
+//import junit.framework.TestCase;
 
-
-public class appServicesTest extends TestCase {
-	
+//public class appServicesTest extends TestCase {
+public class appServicesTest {
+	/*
 	@Mock
 	public Servs servico;
 	
@@ -31,7 +31,7 @@ public class appServicesTest extends TestCase {
 		
 		
 	} 
-	
+	*/
 	
 
 }
