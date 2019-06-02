@@ -1,5 +1,6 @@
 package com.siteapprfs.main.services;
 
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,82 +10,80 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 
 public class DatabaseConnection {
-	
-	Connection conn = null;                         
+	Connection conn = null;
 	private static final Logger logger = Logger.getLogger(DatabaseConnection.class);
-	private static final String CONNECTION = "jdbc:mysql://localhost/siterfs?useUnicode=true&characterEncoding=utf-8&useTimezone=true&serverTimezone=UTC";
-	private static final String USER = "root";
-	private static final String PASS = "";
+	private String url;
+	private String user;
+	private String pass;
 	private DataSource ds;
 	private PreparedStatement ps;
-	
-	
+
 	public DatabaseConnection(DataSource ds) {
 		this.setDs(ds);
 		this.getConn();
 	}
-	
+
 	public DatabaseConnection() {
 		this.getConn();
 	}
-	
+
 	public PreparedStatement prepareStatement(String query) {
 		try {
-		if(getPs() == null) {
-			return getConn().prepareStatement(query);
-		}else {
-			return getPs();
-		}
-		}catch(SQLException | NullPointerException e) {
-			logger.error("Error prepareStatement >> "+e.toString());
+			if (getPs() == null) {
+				return getConn().prepareStatement(query);
+			} else {
+				return getPs();
+			}
+		} catch (SQLException | NullPointerException e) {
+			logger.error("Error prepareStatement >> ", e);
 			return null;
 		}
 	}
-	
+
 	public void setConn(Connection cn) {
 		this.conn = cn;
 	}
-	
-	public Connection getConn(){
-	
-	 if(this.getDs() ==  null) {
-			
-		if(this.conn == null) {
-			try {	
-			Properties prop = new Properties();
-			prop.setProperty("user", USER);
-			prop.setProperty("password", PASS);
-			
-			setConn( DriverManager.getConnection(CONNECTION, prop));
-			}catch(SQLException e) {
-				errorConn(e);
-			}
-			}
-		}else {
+
+	public Connection getConn() {
+		try {
 			if(this.conn == null) {
-				try {
-					this.conn = this.getDs().getConnection();
-				} catch (SQLException e) {
-					errorConn(e);
-				}
+			Properties props = new Properties();	
+			if(System.getenv("DATABASE_URL") != null) {	
+			URI dbUri = new URI(System.getenv("DATABASE_URL"));
+			user = dbUri.getUserInfo().split(":")[0];
+			pass = dbUri.getUserInfo().split(":")[1];
+			url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+			}else {
+				url = "jdbc:mysql://localhost/siterfs?useUnicode=true&characterEncoding=utf-8&useTimezone=true&serverTimezone=UTC";
+				user = "root";
+				pass =  "";
+				
 			}
-		}	
+			props.setProperty("user", user);
+			props.setProperty("password", pass);
+			setConn(DriverManager.getConnection(url, props));
+			}
+
+		} catch (Exception e) {
+			errorConn(e);
+		}
+
 		return conn;
 	}
-	
-	
+
 	public void closeConn(PreparedStatement ps) throws SQLException {
-		if(ps != null) {
+		if (ps != null) {
 			ps.close();
 		}
 	}
 
 	private void errorConn(Exception e) {
-		logger.error("Error getConn >> "+e.getMessage());
+		logger.error("Error getConn >> ", e);
 	}
-	
+
 	public DataSource getDs() {
 		return ds;
 	}
@@ -92,7 +91,7 @@ public class DatabaseConnection {
 	public void setDs(DataSource ds) {
 		this.ds = ds;
 	}
-	
+
 	public PreparedStatement getPs() {
 		return ps;
 	}
@@ -100,5 +99,4 @@ public class DatabaseConnection {
 	public void setPs(PreparedStatement ps) {
 		this.ps = ps;
 	}
-
 }

@@ -5,8 +5,10 @@ package com.siteapprfs.main.services;
 
 //import junit.framework.TestCase;
 
+
 //public class appServicesTest extends TestCase {
-public class appServicesTest {
+	public class appServicesTest {	
+	
 	/*
 	@Mock
 	public Servs servico;
@@ -31,7 +33,7 @@ public class appServicesTest {
 		
 		
 	} 
-	*/
 	
-
+	
+*/
 }

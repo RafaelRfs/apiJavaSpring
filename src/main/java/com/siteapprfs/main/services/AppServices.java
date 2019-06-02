@@ -5,14 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
 
-
-@Service
 public class AppServices extends DatabaseConnection {
 	
 	private static final Logger logger = Logger.getLogger(DatabaseConnection.class);
@@ -37,20 +32,18 @@ public class AppServices extends DatabaseConnection {
 			smt.execute();
 			smt.close();	
 		}catch(SQLException|NullPointerException e ){
-			logger.error("Error CREATE >> "+e.toString());
+			logger.error("Error CREATE >> ",e);
 		}
 		finally {
 			closeCn(ps);
 		}
 	}
 
-
-
 	private void closeCn(PreparedStatement ps) {
 		try {
 		super.closeConn(ps);
 		}catch(SQLException|NullPointerException e ) {
-			logger.error("Error closeConn >> "+e.getMessage());
+			logger.error("Error closeConn >> ", e);
 		}
 	}
 	
@@ -60,7 +53,7 @@ public class AppServices extends DatabaseConnection {
 			try {
 				result.close();
 			} catch (SQLException e) {
-				logger.error("Error Result >> "+e.getMessage());
+				logger.error("Error Result >> ",e);
 			}
 		}
 	}
@@ -88,7 +81,7 @@ public class AppServices extends DatabaseConnection {
 			}
 		}
 		catch(SQLException|NullPointerException e){
-			logger.error("Error READ >> "+e.toString());
+			logger.error("Error READ >> ",e);
 		}
 		finally {
 			closeCn(ps, result);
@@ -111,13 +104,12 @@ public class AppServices extends DatabaseConnection {
 			}
 		}
 		catch(SQLException e){
-			logger.error("Error READ >> "+e.toString());
+			logger.error("Error READ >> ",e);
 		}finally {
 			closeCn(ps, rs);
 		}
 		return srv;
 	} // Pesquisa por Id
-	
 	
 	public List<Servs> readService(String nome){
 		List<Servs> srv = new ArrayList<>();
@@ -133,14 +125,13 @@ public class AppServices extends DatabaseConnection {
 			}
 		}
 		catch(SQLException|NullPointerException e){
-			logger.error("Error READ<string> >> "+e.toString());
+			logger.error("Error READ<string> >> ",e);
 		}finally {
 			closeCn(ps,rs);
 		}
 		return srv;
 	} 
 
-	
 	public void updateService(Servs srv){
 		String sql = "UPDATE services SET nome=?, descricao =? , conteudo = ? , img =  ? WHERE id = ? ";
 		PreparedStatement ps = null;
@@ -153,13 +144,12 @@ public class AppServices extends DatabaseConnection {
 			ps.setInt(5, srv.getId());
 			ps.execute();
 		}catch(SQLException|NullPointerException e){	
-			logger.error("Error UPDATE  >> "+e.toString());
+			logger.error("Error UPDATE  >> ",e);
 		}
 		finally {
 			closeCn(ps);
 		}
 	}// CRUD UPDATE
-	
 	
 	public void deleteService(Servs srv){
 		String sql = "DELETE FROM services WHERE id=?";
@@ -169,7 +159,7 @@ public class AppServices extends DatabaseConnection {
 			ps.setInt(1, srv.getId());
 			ps.execute();
 		}catch(SQLException|NullPointerException e){
-			logger.error("Error DELETE<srv>  >> "+e.toString());
+			logger.error("Error DELETE<srv>  >> ",e);
 		}
 		finally {
 			closeCn(ps);
@@ -184,7 +174,7 @@ public class AppServices extends DatabaseConnection {
 			ps.setInt(1, id);
 			ps.execute();
 		}catch(SQLException|NullPointerException e){
-			logger.error("Error DELETE  >> "+e.toString());
+			logger.error("Error DELETE  >> ",e);
 		}
 		finally {
 			closeCn(ps);
