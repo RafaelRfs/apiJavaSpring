@@ -1,5 +1,5 @@
-com\siteapprfs\main\services\Servs.class
 com\siteapprfs\main\controllers\AppController.class
 com\siteapprfs\main\services\AppServices.class
-com\siteapprfs\main\Server.class
 com\siteapprfs\main\services\DatabaseConnection.class
+com\siteapprfs\main\services\Servs.class
+com\siteapprfs\main\Server.class

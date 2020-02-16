@@ -14,4 +14,22 @@
     <appender-ref ref="stdout" />
   </root>
   
+  
+   <root>
+        <priority value ="debug" />
+        <appender-ref ref="console"/>
+    </root>
+    
+    
+      <root>
+        <priority value ="info" />
+        <appender-ref ref="console"/>
+    </root>
+    
+     <root>
+        <priority value ="error" />
+        <appender-ref ref="console"/>
+    </root>
+  
+  
 </log4j:configuration>
