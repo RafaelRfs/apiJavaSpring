@@ -6,11 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class AppServices extends DatabaseConnection {
 	
-	private static final Logger logger = Logger.getLogger(DatabaseConnection.class);
+	private static final Logger logger = LoggerFactory.getLogger(AppServices.class);
 	
 	public AppServices() {
 		super();

@@ -6,15 +6,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
-
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DatabaseConnection {
-	Connection conn = null;
-	private static final Logger logger = Logger.getLogger(DatabaseConnection.class);
+	private Connection conn = null;
+	private static final Logger logger = LoggerFactory.getLogger(AppServices.class);
 	private String url;
 	private String user;
 	private String pass;
