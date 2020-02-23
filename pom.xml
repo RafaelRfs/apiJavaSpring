@@ -77,6 +77,13 @@
 			<argLine>-Xmx512m</argLine>
             <runOrder>alphabetical</runOrder>
             <useSystemClassLoader>false</useSystemClassLoader>
+			<archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.siteapprfs.main.Server</mainClass>
+          </manifest>
+        </archive>
         </configuration>
     </plugin>
         </plugins>
