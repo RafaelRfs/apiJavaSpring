@@ -12,17 +12,17 @@ import com.siteapprfs.main.services.Servs;
 
 @RestController
 public class AppController {
-    private AppServices appService;
-    
+    //private AppServices appService;
+    /*
 	public AppController() {
 		appService = new AppServices(null);
 	}
-	
+	*/
 	@RequestMapping("/")
 	public String list() {
 		return " API RESTFULL FEITA POR RAFAEL F.S ...";
 	}
-	
+	/*
 	@RequestMapping(method=RequestMethod.GET, value = "/servicos")
 	public List<Servs> index() {
 		return appService.readService();
@@ -52,5 +52,5 @@ public class AppController {
 	public void updateServ(@Valid @RequestBody Servs srv) {
 		appService.updateService(srv);
 	}
-	
+	*/
 }
