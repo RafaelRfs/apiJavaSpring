@@ -50,7 +50,7 @@ public class DatabaseConnection {
 		try {
 			if(this.conn == null) {
 			Properties props = new Properties();	
-			if(System.getenv("DATABASE_URL") != null) {	
+			if(System.getenv("DATABASE_URL2") != null) {	
 			URI dbUri = new URI(System.getenv("DATABASE_URL"));
 			user = dbUri.getUserInfo().split(":")[0];
 			pass = dbUri.getUserInfo().split(":")[1];
@@ -59,7 +59,6 @@ public class DatabaseConnection {
 				url = "jdbc:mysql://localhost/siterfs?useUnicode=true&characterEncoding=utf-8&useTimezone=true&serverTimezone=UTC";
 				user = "root";
 				pass =  "";
-				
 			}
 			props.setProperty("user", user);
 			props.setProperty("password", pass);
