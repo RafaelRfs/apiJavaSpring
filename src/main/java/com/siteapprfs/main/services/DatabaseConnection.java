@@ -13,12 +13,12 @@ import org.slf4j.LoggerFactory;
 
 public class DatabaseConnection {
 	private Connection conn = null;
-	private static final Logger logger = LoggerFactory.getLogger(AppServices.class);
 	private String url;
 	private String user;
 	private String pass;
 	private DataSource ds;
 	private PreparedStatement ps;
+	private static final Logger logger = LoggerFactory.getLogger(AppServices.class);
 
 	public DatabaseConnection(DataSource ds) {
 		this.setDs(ds);
