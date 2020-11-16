@@ -1,0 +1,5 @@
+-Djava.io.tmpdir=
+
+-Dspring.config.location=
+
+java -jar   -Djava.io.tmpdir=~/tmp          api-0.0.1-SNAPSHOT.jar
