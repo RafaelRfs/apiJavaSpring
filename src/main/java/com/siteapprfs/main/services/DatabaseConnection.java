@@ -56,9 +56,9 @@ public class DatabaseConnection {
 			pass = dbUri.getUserInfo().split(":")[1];
 			url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 			}else {
-				url = "jdbc:mysql://localhost/siterfs?useUnicode=true&characterEncoding=utf-8&useTimezone=true&serverTimezone=UTC";
+				url = "jdbc:mysql://127.0.0.1:3306/testSystems?useUnicode=true&characterEncoding=utf-8&useTimezone=true&serverTimezone=UTC";
 				user = "root";
-				pass =  "";
+				pass =  "1234";
 			}
 			props.setProperty("user", user);
 			props.setProperty("password", pass);

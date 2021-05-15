@@ -36,12 +36,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.13.3</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<version>5.5.0-M1</version>
@@ -54,6 +48,14 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.j256.simplemagic</groupId>
+			<artifactId>simplemagic</artifactId>
+			<version>1.16</version>
+		</dependency>
+
+
 
 	</dependencies>
 
