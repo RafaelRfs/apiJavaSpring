@@ -1,0 +1,9 @@
+{
+    "editor.minimap.enabled": false,
+   "terminal.integrated.shell.windows": "C:\\git\\bin\\bash.exe",
+    "terminal.external.windowsExec": "\\\\cmd",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "window.zoomLevel": -1
+}
